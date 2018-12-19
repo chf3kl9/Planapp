@@ -1,0 +1,15 @@
+<div style="text-align: center">
+  <h1>
+    Login Planapp
+  </h1>
+
+  Username:
+  <input formControl="email"  class="form-control" name="email" id="email" required #email>
+  <br>
+  Password:
+  <input formControl="password" type="password" class="form-control" name="password" id="password" required #password>
+  <br>
+  <button type="submit" (click)="sendLogin(email.value, password.value)"> Login</button>
+  <br> or <br>
+  <button type="submit" (click)="sendRegister(email.value, password.value)"> Register</button>
+</div>
