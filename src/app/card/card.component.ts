@@ -1,32 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../../services/data.service';
-import {RestService} from '../../services/rest.service';
-import {Router} from '@angular/router';
 import {PlanningCard} from '../../models/PlanningCard';
 import {HttpErrorResponse} from '@angular/common/http';
+import {RestService} from '../../services/rest.service';
+import {Router} from '@angular/router';
+import {DataService} from '../../services/data.service';
+import {Coworker} from '../../models/Coworker';
 
 @Component({
-  selector: 'app-planningcards',
-  templateUrl: './planningcards.component.html',
-  styleUrls: ['./planningcards.component.css']
+  selector: 'app-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.css']
 })
-export class PlanningcardsComponent implements OnInit {
+export class CardComponent implements OnInit {
 
-  cards: PlanningCard[];
+  card: PlanningCard
   public httpError: HttpErrorResponse = null;
 
   constructor(private restService: RestService, private router: Router, private data: DataService) {
     if (this.data.getUser() == null)
       this.router.navigate(['Login']);
     else
-      this.restService.getPlanningCards(data.getUser().getId).subscribe(
+      this.restService.getPlanningCard(1).subscribe(
         data => {
           console.log(data, "Data");
-          this.cards = [];
-          for (let row of data) {
-            this.cards.push(new PlanningCard(row));
-          }
-          console.log(this.cards, 'Cards');
+          this.card = new PlanningCard(data);
+          console.log(this.card, 'Card');
         }, error => {
           this.httpError = error;
           console.error('Couldn\'t connect to the rest server', error);
@@ -39,8 +37,12 @@ export class PlanningcardsComponent implements OnInit {
       this.router.navigate(['Login']);
   }
 
-  toCoworkers(){
-    this.router.navigate(['Coworkers']);
+  toPlanningcards(){
+    this.router.navigate(['PlanningCards']);
+  }
+
+  remove(coworker: Coworker){
+
   }
 
 }

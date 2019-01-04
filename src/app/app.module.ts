@@ -8,20 +8,23 @@ import { CoworkersComponent } from './coworkers/coworkers.component';
 import { PlanningcardsComponent } from './planningcards/planningcards.component';
 import {RestService} from '../services/rest.service';
 import {HttpClientModule} from '@angular/common/http';
+import {DataService} from '../services/data.service';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CoworkersComponent,
-    PlanningcardsComponent
+    PlanningcardsComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [RestService],
+  providers: [RestService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

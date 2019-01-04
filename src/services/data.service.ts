@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
+import {Coworker} from '../models/Coworker';
 
 @Injectable({
   providedIn: 'root'
 })
 @Injectable()
 export class DataService {
-  private id: number;
+  private user: Coworker = null;
 
-  changeId(id: number){
-    this.id = id;
+  changeUser(user: Coworker){
+    this.user = user;
   }
 
-  getId(){
-    return this.id;
+  getUser(){
+    return this.user;
   }
 
   constructor() { }
