@@ -1,3 +1,28 @@
-<p>
-  planningcards works!
-</p>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3" flex>Name:</div>
+      <div class="col-sm-3" flex>Description:</div>
+      <div class="col-sm-3" flex>Deadline:</div>
+      <div class="col-sm-3" flex>Actions:</div>
+    </div>
+  </div>
+</div>
+<tbody *ngIf="planningCards != null">
+  <tr *ngFor="let card of planningCards">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3" flex>{{card.getName}}</div>
+        <div class="col-sm-3" flex>{{card.getCardDescription}}</div>
+        <div class="col-sm-3" flex>{{card.getDeadline}}</div>
+        <div class="col-sm-3" flex>
+          <button class="btn btn-primary" (click)="editCard(card.getId)">Edit</button>
+        </div>
+      </div>
+    </div>
+  </tr>
+</tbody>
+<div align="center">
+  <button class="btn btn-primary" (click)="editCard(0)">Edit</button>
+</div>
