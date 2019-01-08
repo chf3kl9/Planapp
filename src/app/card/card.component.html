@@ -1,0 +1,43 @@
+<title>Planningcard</title>
+
+PlanningCards:<br>
+<div *ngIf="httpError == null && card != null">
+  <table id="datatable" class="table table-striped table-bordered table-sm row-border hover" datatable>
+    <tr>
+      <th>Naam</th>
+      <th>Beschrijving</th>
+      <th>Deadline</th>
+      <th>Acties</th>
+    </tr>
+    <tbody>
+    <tr *ngIf="card != null">
+      <td>{{card.getName}}</td>
+      <td>{{card.getCardDescription}}</td>
+      <td>{{card.getDeadline}}</td>
+      <td></td>
+    </tr>
+    </tbody>
+  </table>
+  <table id="datatable2" class="table table-striped table-bordered table-sm row-border hover" datatable2>
+    <tr>
+      <th>Coworkers:</th>
+    </tr>
+    <tr *ngFor="let coworker of card.getUsers">
+      <td>{{coworker.getName}}</td>
+      <td>
+        <button type="submit" (click)="remove(coworker)">Remove {{coworker.getName}}</button>
+      </td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="httpError != null">
+  <div class="card text-white bg-danger text-center">
+    <div class="card-header">{{httpError.name + ': ' + httpError.status}}</div>
+    <div class="card-body">
+      <p>{{httpError.message}}</p>
+    </div>
+  </div>
+</div>
+<div>
+  <button type="submit" (click)="toPlanningcards()">Back</button>
+</div>

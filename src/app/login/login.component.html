@@ -5,12 +5,16 @@
   </h1>
 
   Username:
+<<<<<<< HEAD
   <input formControl="email" name="email" id="email" required #email>
+=======
+  <input formControl="username" class="form-control" name="email" id="username" required #username>
+>>>>>>> 949ebfdd9b028b7dc785570b05079263a0cd2c09
   <br>
   Password:
   <input formControl="password" type="password" name="password" id="password" required #password>
   <br>
-  <button type="submit" (click)="sendLogin(email.value, password.value)"> Login</button>
+  <button type="submit" (click)="sendLogin(username.value, password.value)"> Login</button>
   <br> or <br>
-  <button type="submit" (click)="sendRegister(email.value, password.value)"> Register</button>
+  <button type="submit" (click)="sendRegister(username.value, password.value)"> Register</button>
 </div>

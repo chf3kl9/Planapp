@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div>
   <div class="container">
@@ -25,4 +26,37 @@
 </tbody>
 <div align="center">
   <button class="btn btn-primary" (click)="editCard(0)">Edit</button>
+=======
+<title>Planningcard</title>
+
+PlanningCards:<br>
+<div *ngIf="httpError == null && cards != null">
+  <table id="datatable" class="table table-striped table-bordered table-sm row-border hover" datatable>
+    <tr>
+      <th>Naam</th>
+      <th>Beschrijving</th>
+      <th>Deadline</th>
+      <th>Acties</th>
+    </tr>
+    <tbody>
+    <tr *ngFor="let card of cards">
+      <td>{{card.getName}}</td>
+      <td>{{card.getCardDescription}}</td>
+      <td>{{card.getDeadline}}</td>
+      <td><a routerLink="/PlanningCards/{{card.getId}}">Edit</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="httpError != null">
+  <div class="card text-white bg-danger text-center">
+    <div class="card-header">{{httpError.name + ': ' + httpError.status}}</div>
+    <div class="card-body">
+      <p>{{httpError.message}}</p>
+    </div>
+  </div>
+</div>
+<div>
+  <button type="submit" (click)="toCoworkers()">To Coworkers</button>
+>>>>>>> 949ebfdd9b028b7dc785570b05079263a0cd2c09
 </div>
