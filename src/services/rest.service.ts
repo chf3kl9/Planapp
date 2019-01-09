@@ -1,13 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-<<<<<<< HEAD
 import {PlanningCard} from '../models/PlanningCard';
 import {Gebruiker} from '../models/Gebruiker';
-=======
-import {Coworker} from '../models/Coworker';
 import {PlanningCard} from '../models/PlanningCard';
->>>>>>> 949ebfdd9b028b7dc785570b05079263a0cd2c09
 
 @Injectable({
   providedIn: 'root'
@@ -23,69 +19,29 @@ export class RestService {
   };
 
   constructor(protected http: HttpClient) {
-<<<<<<< HEAD
     this.url = 'http://localhost:8094/planning/';
   }
 
-  login(username:string, password:string): Observable<Gebruiker>{
+  login(username: string, password: string): Observable<Gebruiker> {
     let gebruiker = new Gebruiker(username, password);
-    return this.http.post<Gebruiker>(this.url + 'login/', gebruiker, this.httpOptions)
+    return this.http.post<Gebruiker>(this.url + 'login/', gebruiker, this.httpOptions);
   }
 
-  register(username:string, password:string): Observable<Gebruiker>{
+  register(username: string, password: string): Observable<Gebruiker> {
     let gebruiker = new Gebruiker(username, password);
     return this.http.post<Gebruiker>(this.url + 'register/', gebruiker, this.httpOptions);
   }
 
-  getCards(userId: number): Observable<PlanningCard[]>{
+  getCards(userId: number): Observable<PlanningCard[]> {
     return this.http.get<PlanningCard[]>(this.url + 'getCards/' + userId);
   }
 
-  editCard(name: string, cardDescription: string, deadline: Date): Observable<PlanningCard>{
+  editCard(name: string, cardDescription: string, deadline: Date): Observable<PlanningCard> {
     let card = new PlanningCard(name, cardDescription, deadline);
     return this.http.post<PlanningCard>(this.url + 'editCard/', card, this.httpOptions);
   }
 
-  getCard(cardId: number): Observable<PlanningCard>{
+  getCard(cardId: number): Observable<PlanningCard> {
     return this.http.get<PlanningCard>(this.url + 'getCard/' + cardId, this.httpOptions);
   }
-
-=======
-    this.url = 'http://192.168.0.196:8094/';
-    this.temp.setId = 1;
-  }
-
-  temp: Coworker = new Coworker(null);
-
-  login(username:string, password:string): Coworker{
-    let coworker = new Coworker(null)
-    coworker.setName = name;
-    coworker.setPass = password;
-    return this.temp;
-    //return this.http.
-  }
-
-  register(username:string, password:string): Coworker{
-    let coworker = new Coworker(null)
-    coworker.setName = name;
-    coworker.setPass = password;
-    return this.temp;
-  }
-
-   addFriend(user: Coworker, friend: string): Coworker{
-    return this.temp;
-   }
-
-   getPlanningCards(userId: number): Observable<PlanningCard[]> {
-    return this.http.get<PlanningCard[]>(this.url + 'PlanningCards/' + userId);
-   }
-
-   getPlanningCard(cardId: number): Observable<PlanningCard> {
-    return this.http.get<PlanningCard>(this.url + 'PlanningCard/' + cardId);
-   }
-
-  getCoworkers(userId: number): Observable<Coworker[]> {
-    return this.http.get<Coworker[]>(this.url + 'Coworkers/' + userId);
-  }
->>>>>>> 949ebfdd9b028b7dc785570b05079263a0cd2c09
 }

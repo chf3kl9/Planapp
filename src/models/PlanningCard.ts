@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {Gebruiker} from './Gebruiker';
 
 export class PlanningCard{
@@ -21,24 +20,6 @@ export class PlanningCard{
     return Object.assign(new this, data);
   }
 
-
-=======
-import {Coworker} from './Coworker';
-
-export class PlanningCard{
-  private id: number;
-  private name: string;
-  private cardDescription: string;
-  private deadline: Date;
-  private users: Coworker[];
-
-  constructor(obj){
-    if (obj != null){
-      for (var prop in obj) this[prop] = obj[prop];
-    }
-  }
-
->>>>>>> 949ebfdd9b028b7dc785570b05079263a0cd2c09
   get getId(): number {
     return this.id;
   }
@@ -70,15 +51,4 @@ export class PlanningCard{
   set setDeadline(value: Date) {
     this.deadline = value;
   }
-<<<<<<< HEAD
-=======
-
-  get getUsers(): Coworker[] {
-    return this.users;
-  }
-
-  set setUsers(value: Coworker[]) {
-    this.users = value;
-  }
->>>>>>> 949ebfdd9b028b7dc785570b05079263a0cd2c09
 }
