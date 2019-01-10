@@ -27,6 +27,19 @@ export class CardSpecificComponent implements OnInit {
         }
       );
     }
+    else
+      this.card = new PlanningCard();
+    if (this.data.getId == null)
+      this.router.navigate(['Login']);
+  }
+
+  saveCard(name:string, description: string, deadline:string){
+    console.log("REEEEE");
+    this.restService.editCard(name, description, new Date()).subscribe(
+      card => {
+        this.router.navigate(['PlanningCards']);
+      }
+    )
   }
 
 }

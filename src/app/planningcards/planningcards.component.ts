@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {PlanningCard} from '../../models/PlanningCard';
 import {RestService} from '../../services/rest.service';
 import {Router} from '@angular/router';
-import {Gebruiker} from '../../models/Gebruiker';
 import {DataService} from '../../services/data.service';
-import {DataService} from '../../services/data.service';
-import {RestService} from '../../services/rest.service';
-import {Router} from '@angular/router';
 import {PlanningCard} from '../../models/PlanningCard';
-import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-planningcards',
@@ -31,6 +25,8 @@ export class PlanningcardsComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.data.getId == null)
+      this.router.navigate(['Login']);
   }
 
   editCard(cardId: number){

@@ -9,16 +9,13 @@ import {RestService} from '../services/rest.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CardSpecificComponent } from './card-specific/card-specific.component';
 import {DataService} from '../services/data.service';
-import {DataService} from '../services/data.service';
-import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PlanningcardsComponent,
-    CardSpecificComponent,
-    CardComponent
+    CardSpecificComponent
   ],
   imports: [
     BrowserModule,

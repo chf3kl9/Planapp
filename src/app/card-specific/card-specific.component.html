@@ -1,4 +1,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<p>
-  card-specific works!
-</p>
+<div>
+  <div *ngIf="card != null">
+    Name:
+    <input formControl="cardname" name="cardname" id="cardname" value="{{card.getName}}" required #cardname>
+    Description:
+    <input formControl="description" name="description" id="description" value="{{card.getCardDescription}}" required #description>
+    Deadline:
+    <input formControl="deadline" name="deadline" id="deadline" value="{{card.getDeadline}}" required #deadline>
+  </div>
+</div>
+<div align="center">
+  <button type="submit" class="btn btn-primary" (click)="saveCard(cardname.value, description.value, deadline.value)">Save</button>
+</div>
