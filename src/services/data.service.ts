@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Gebruiker} from '../models/Gebruiker';
+import {PlanningCard} from '../models/PlanningCard';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import {Gebruiker} from '../models/Gebruiker';
 @Injectable()
 export class DataService {
   private userId: number;
+  private user: Gebruiker
 
   set setId(id: number){
     this.userId = id;
@@ -16,14 +18,22 @@ export class DataService {
     return this.userId;
   }
 
-  private cardId: number;
+  set setUser(user: Gebruiker){
+    this.user = user;
+  }
 
-  set setCard(id: number){
-    this.cardId = id;
+  get getUser(){
+    return this.user;
+  }
+
+  private card: PlanningCard;
+
+  set setCard(card: PlanningCard){
+    this.card = card;
   }
 
   get getCard() {
-    return this.cardId;
+    return this.card;
   }
 
   constructor() { }

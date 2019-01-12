@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
       gebruiker => {
         let temp = Gebruiker.fromJSON(gebruiker);
         this.data.setId = temp.getId;
+        this.data.setUser = temp;
         console.log(temp.getId);
         if (temp.getId>0)
           this.router.navigate(['PlanningCards']);
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
       gebruiker => {
         let temp = Gebruiker.fromJSON(gebruiker);
         this.data.setId = temp.getId;
+        this.data.setUser = temp;
         console.log(temp.getId);
         if (temp.getId>0)
           this.router.navigate(['PlanningCards']);

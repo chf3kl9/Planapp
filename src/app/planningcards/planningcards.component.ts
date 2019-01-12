@@ -29,9 +29,18 @@ export class PlanningcardsComponent implements OnInit {
       this.router.navigate(['Login']);
   }
 
-  editCard(cardId: number){
-    this.data.setCard = cardId;
+  editCard(card: PlanningCard){
+    this.data.setCard = card;
     this.router.navigate(['Card']);
+  }
+
+  createCard(){
+    this.restService.editCard(0, "new card", "New Card", new Date(), this.data.getUser).subscribe(
+      card => {
+        this.data.setCard = PlanningCard.fromJSON(card);
+        this.router.navigate(['Card']);
+      }
+    );
   }
 
 }

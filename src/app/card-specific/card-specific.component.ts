@@ -11,8 +11,7 @@ import {PlanningCard} from '../../models/PlanningCard';
 })
 export class CardSpecificComponent implements OnInit {
 
-  private card: PlanningCard;
-
+  card: PlanningCard;
 
   constructor(private restService: RestService, private router: Router, private data: DataService) {
 
@@ -20,26 +19,22 @@ export class CardSpecificComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.data.getCard);
-    if (this.data.getCard != 0) {
-      this.restService.getCard(this.data.getCard).subscribe(
-        card => {
-          this.card = PlanningCard.fromJSON(card);
-        }
-      );
-    }
-    else
-      this.card = new PlanningCard();
+    this.card = this.data.getCard;
     if (this.data.getId == null)
       this.router.navigate(['Login']);
   }
 
   saveCard(name:string, description: string, deadline:string){
-    console.log("REEEEE");
-    this.restService.editCard(name, description, new Date()).subscribe(
+    this.restService.editCard(this.data.getCard.getId, name, description, new Date(deadline), this.data.getUser).subscribe(
       card => {
         this.router.navigate(['PlanningCards']);
       }
     )
+  }
+
+  removeCard(card: PlanningCard){
+    this.restService.removeCard(card);
+    this.router.navigate(['PlanningCards']);
   }
 
 }

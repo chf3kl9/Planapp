@@ -35,12 +35,20 @@ export class RestService {
     return this.http.get<PlanningCard[]>(this.url + 'getCards/' + userId);
   }
 
-  editCard(name: string, cardDescription: string, deadline: Date): Observable<PlanningCard> {
-    let card = new PlanningCard(name, cardDescription, deadline);
+  editCard(cardId: number, name: string, cardDescription: string, deadline: Date, user: Gebruiker): Observable<PlanningCard> {
+    let card = new PlanningCard(name, cardDescription, deadline, user);
+    if (cardId != 0)
+      card.setId = cardId;
+    if (deadline != null)
+      card.setDeadline = deadline;
     return this.http.post<PlanningCard>(this.url + 'editCard/', card, this.httpOptions);
   }
 
   getCard(cardId: number): Observable<PlanningCard> {
     return this.http.get<PlanningCard>(this.url + 'getCard/' + cardId, this.httpOptions);
+  }
+
+  removeCard(card: PlanningCard){
+    this.http.post<PlanningCard>(this.url + 'deleteCard/', card, this.httpOptions);
   }
 }

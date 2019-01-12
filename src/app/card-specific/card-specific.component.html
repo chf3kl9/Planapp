@@ -2,13 +2,18 @@
 <div>
   <div *ngIf="card != null">
     Name:
-    <input formControl="cardname" name="cardname" id="cardname" value="{{card.getName}}" required #cardname>
+    <input formControl="cardnamea" name="cardnamea" id="cardnamea" value="{{card.getName}}" required #cardname>
     Description:
-    <input formControl="description" name="description" id="description" value="{{card.getCardDescription}}" required #description>
+    <input formControl="carddescriptiona" name="carddescriptiona" id="carddescriptiona" value="{{card.getCardDescription}}" required #carddescription>
     Deadline:
-    <input formControl="deadline" name="deadline" id="deadline" value="{{card.getDeadline}}" required #deadline>
+    <input formControl="deadlinea" name="deadlinea" id="deadlinea" value="{{card.getDeadline}}" required #deadline>
+
+    <div align="center">
+      <button type="submit" class="btn btn-primary" (click)="saveCard(cardname.value, carddescription.value, deadline.value)">Save</button>
+    </div>
+    <div align="center">
+      <button type="submit" class="btn btn-primary" (click)="removeCard(card)">Remove</button>
+    </div>
   </div>
 </div>
-<div align="center">
-  <button type="submit" class="btn btn-primary" (click)="saveCard(cardname.value, description.value, deadline.value)">Save</button>
-</div>
+

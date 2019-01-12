@@ -17,12 +17,12 @@
         <div class="col-sm-3" flex>{{card.getCardDescription}}</div>
         <div class="col-sm-3" flex>{{card.getDeadline}}</div>
         <div class="col-sm-3" flex>
-          <button class="btn btn-primary" (click)="editCard(card.getId)">Edit</button>
+          <button class="btn btn-primary" (click)="editCard(card)">Edit</button>
         </div>
       </div>
     </div>
   </tr>
 </tbody>
 <div align="center">
-  <button class="btn btn-primary" (click)="editCard(0)">Edit</button>
+  <button class="btn btn-primary" (click)="createCard()">Create new</button>
 </div>

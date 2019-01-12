@@ -4,16 +4,18 @@ export class PlanningCard{
   private id: number;
   private name: string = "";
   private cardDescription: string = "";
-  private deadline: Date = new Date();
+  private deadline: Date;
   private user: Gebruiker;
 
-  constructor(name?: string, cardDescription?: string, deadline?: Date){
+  constructor(name?: string, cardDescription?: string, deadline?: Date, user?: Gebruiker){
     if (name != null)
       this.name = name;
     if (cardDescription != null)
       this.cardDescription = cardDescription;
     if (deadline != null)
       this.deadline = deadline;
+    if (user != null)
+      this.user = user;
   }
 
   static fromJSON(data: any) {
@@ -50,5 +52,13 @@ export class PlanningCard{
 
   set setDeadline(value: Date) {
     this.deadline = value;
+  }
+
+  get getUser(): Gebruiker {
+    return this.user;
+  }
+
+  set setUser(value: Gebruiker) {
+    this.user = value;
   }
 }
